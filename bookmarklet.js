@@ -31,8 +31,9 @@ if(/^https:\/\/www\.geocaching\.com\/my\/logs\.aspx/.test(window.location.href))
                                       data-gc-url="${data.gcUrl}"
                                       data-region="${data.region}"
                                      data-log-url="${data.logUrl}"
-                                      data-log-id="${data.logId}">
-          ${(data.logAlreadyImported ? '<small>Already imported!</small>' : 'Import into WP')}
+                                      data-log-id="${data.logId}"
+                                            style="font-size: ${(data.logAlreadyImported ? '80%' : '100%')}">
+          ${(data.logAlreadyImported ? 'Already imported!' : 'Import into WP')}
         </a>
       </td>
     `);
@@ -116,8 +117,9 @@ if(/^https:\/\/www\.geocaching\.com\/my\/logs\.aspx/.test(window.location.href))
                                         data-date="${data.date}"
                                       data-gc-url="${data.gcUrl}"
                                      data-log-url="${data.logUrl}"
-                                      data-log-id="${data.logId}">
-          ${(data.logAlreadyImported ? '<small>Already imported!</small>' : 'Import into WP')}
+                                      data-log-id="${data.logId}"
+                                            style="font-size: ${(data.logAlreadyImported ? '80%' : '100%')}">
+          ${(data.logAlreadyImported ? 'Already imported!' : 'Import into WP')}
         </a>
       </td>
     `);

@@ -8,6 +8,8 @@ A WordPress plugin that streamlines the import of personal logs from GPS gaming 
 modification for compatibility with your site and theme, and probably suitable for adaptation/as a jumping-off point
 for other sites/CMS platforms.
 
+For a more in-depth examination of the concept, including screenshots and diagrams, see https://danq.me/2018/09/16/importing-geocaching-logs-into-wordpress/
+
 ## Concept
 
 GPS games like geocaching and geohashing require that you attend specific locations on the Earth's surface (possibly

@@ -58,7 +58,7 @@ function run_gc_reposter() {
       <h2>Dan's Geocaching.com Reposter</h2>
       <p>
         Drag this bookmarklet to your bookmarks:
-        <a href="javascript:(function(){let s=document.createElement('script');s.src=`https://danq.me/?danq_gc_js&${new Date().getTime()}`;document.body.appendChild(s);})()">Import My Finds</a>
+        <a href="javascript:(function(){let s=document.createElement('script');s.src=`<?php echo get_site_url(NULL, "/?danq_gc_js"); ?>&${new Date().getTime()}`;document.body.appendChild(s);})()">Import My Finds</a>
       </p>
       <p>
         Run it on your logs list page, e.g.:

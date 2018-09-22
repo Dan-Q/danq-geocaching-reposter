@@ -90,4 +90,34 @@ function danq_gc_js() {
 }
 
 
+/**
+ * Shortcodes
+ */
+function danq_gc_stats($atts, $content = null) {
+  $finds_sql = <<<END_OF_SQL
+    SELECT COUNT(wp_posts.ID), MIN(wp_posts.post_date), MAX(wp_posts.post_date)
+    FROM wp_posts
+    LEFT JOIN wp_postmeta expedition_result ON wp_posts.ID = expedition_result.post_id AND expedition_result.meta_key = 'checkin_type'
+    LEFT JOIN wp_term_relationships ON wp_posts.ID = wp_term_relationships.object_id
+    LEFT JOIN wp_term_taxonomy ON wp_term_relationships.term_taxonomy_id = wp_term_taxonomy.term_taxonomy_id
+    LEFT JOIN wp_terms ON wp_term_taxonomy.term_id = wp_terms.term_id
+    WHERE wp_posts.post_type = 'post' AND wp_posts.post_status = 'publish'
+    AND wp_term_taxonomy.taxonomy = 'kind'
+    AND wp_terms.slug = 'checkin'
+    AND expedition_result.meta_value IN ('Found it', 'found');
+END_OF_SQL;
+  $finds = $GLOBALS['wpdb']->get_results($finds_sql, ARRAY_N)[0];
+  $first = date('j F Y', strtotime($finds[1]));
+  $last = date('j F Y', strtotime($finds[2]));
+
+  $result = <<<END_OF_HTML
+    <p>
+      Geocache finds: <strong>{$finds[0]}</strong>, between {$first} and {$last}.
+    </p>
+END_OF_HTML;
+  return $result;
+}
+add_shortcode('danq_gc_stats', 'danq_gc_stats');
+
+
 ?>
